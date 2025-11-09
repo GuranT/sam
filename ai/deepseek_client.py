@@ -1,13 +1,12 @@
 import aiohttp
 import logging
-from config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 class DeepSeekClient:
-    def __init__(self):
-        self.api_key = settings.DEEPSEEK_API_KEY
-        self.api_url = settings.DEEPSEEK_API_URL
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.api_url = "https://api.deepseek.com/v1/chat/completions"
         
     async def send_message(self, message: str):
         if not self.api_key:
