@@ -3,21 +3,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class Settings:
-    # Telegram Bot
-    BOT_TOKEN = os.getenv('BOT_TOKEN')
-    
-    # DeepSeek API
-    DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
-    DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
-    DEEPSEEK_MODEL = "deepseek-chat"
-    
-    # Bot Settings
-    ADMIN_IDS = [int(x) for x in os.getenv('ADMIN_IDS', '123456789').split(',') if x]
-    MAX_HISTORY = int(os.getenv('MAX_HISTORY', 5))  # Уменьшено для стабильности
-    MAX_TOKENS = int(os.getenv('MAX_TOKENS', 1000))  # Уменьшено для стабильности
-    
-    # Rate Limiting
-    REQUESTS_PER_MINUTE = int(os.getenv('REQUESTS_PER_MINUTE', 5))  # Уменьшено
+# Простые настройки без сложных классов
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
+ADMIN_IDS = os.getenv('ADMIN_IDS', '123456789')
 
-settings = Settings()
+# Проверка обязательных переменных
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN не установлен в переменных окружения")
