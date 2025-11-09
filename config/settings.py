@@ -13,11 +13,11 @@ class Settings:
     DEEPSEEK_MODEL = "deepseek-chat"
     
     # Bot Settings
-    ADMIN_IDS = [int(x) for x in os.getenv('ADMIN_IDS', '').split(',') if x]
-    MAX_HISTORY = int(os.getenv('MAX_HISTORY', 10))
-    MAX_TOKENS = int(os.getenv('MAX_TOKENS', 2000))
+    ADMIN_IDS = [int(x) for x in os.getenv('ADMIN_IDS', '123456789').split(',') if x]
+    MAX_HISTORY = int(os.getenv('MAX_HISTORY', 5))  # Уменьшено для стабильности
+    MAX_TOKENS = int(os.getenv('MAX_TOKENS', 1000))  # Уменьшено для стабильности
     
     # Rate Limiting
-    REQUESTS_PER_MINUTE = int(os.getenv('REQUESTS_PER_MINUTE', 10))
+    REQUESTS_PER_MINUTE = int(os.getenv('REQUESTS_PER_MINUTE', 5))  # Уменьшено
 
 settings = Settings()
