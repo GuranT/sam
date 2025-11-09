@@ -3,7 +3,9 @@ services:
     name: deepseek-telegram-bot
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
     startCommand: python app.py
     envVars:
       - key: BOT_TOKEN
@@ -13,8 +15,6 @@ services:
       - key: ADMIN_IDS
         value: "123456789"
       - key: MAX_HISTORY
-        value: "10"
+        value: "5"
       - key: MAX_TOKENS
-        value: "2000"
-      - key: REQUESTS_PER_MINUTE
-        value: "10"
+        value: "1000"
